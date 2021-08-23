@@ -1,0 +1,22 @@
+{
+  "presets": [
+    "@babel/preset-env",
+    "@babel/preset-typescript",
+    ["@babel/preset-react", {
+      "runtime": "automatic"
+    }]
+  ],
+  "plugins": [["module-resolver", {
+    "extensions": [
+      ".js",
+      ".jsx",
+      ".ts",
+      ".tsx",
+      ".android.js",
+      ".android.tsx",
+      ".ios.js",
+      ".ios.tsx"
+    ],
+    "root": ["."]
+  }]]
+}
