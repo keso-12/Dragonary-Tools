@@ -36,14 +36,14 @@ export default function SignUp() {
           <Grid item md={4}>
             <Card style={{ width: '400px', padding: '1em' }}>
               <EggCard dragonState={offspring} />
-              <TextField id="element" name="element" label="Ember Element" value={ember} onChange={(e) => setEmber(e.target.value)} variant="filled" select fullWidth>
+              <TextField id="element" name="element" label="Ember Element" value={ember} onChange={(e) => setEmber(e.target.value)} variant="outlined" select fullWidth>
                 {elementList.map((option) => (
                   <MenuItem key={option.value} value={option.value}>
                     {option.label}
                   </MenuItem>
                 ))}
               </TextField>
-              <Button variant="outlined" color="primary" onClick={Breed} style={{ marginTop: '0.2em' }} fullWidth>
+              <Button variant="contained" color="primary" onClick={Breed} style={{ marginTop: '0.5em' }} fullWidth>
                 Breed
               </Button>
             </Card>

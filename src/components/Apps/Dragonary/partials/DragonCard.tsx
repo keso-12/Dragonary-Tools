@@ -60,7 +60,7 @@ export default function DragonCard({ title, dragonState, setDragonState }: drago
           icon={<AssessmentIcon />}
           onChange={handleChange}
         />
-        <TextField name="element" label="Element" value={element} onChange={handleChange} variant="filled" select fullWidth>
+        <TextField name="element" label="Element" value={element} onChange={handleChange} style={{ margin: '0.4em' }} variant="outlined" select fullWidth>
           {elementList.map((option) => (
             <MenuItem key={option.value} value={option.value}>
               {option.label}

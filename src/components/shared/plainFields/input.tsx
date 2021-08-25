@@ -28,7 +28,7 @@ const TextInput = ({
     value={value}
     onChange={onChange}
     variant="outlined"
-    style={{ margin: '0.2em' }}
+    style={{ margin: '0.4em' }}
     InputProps={{
       startAdornment: (
         <InputAdornment position="start">
