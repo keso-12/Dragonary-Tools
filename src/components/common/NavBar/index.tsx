@@ -5,7 +5,7 @@ import {
 } from '@material-ui/core';
 import Brightness4Icon from '@material-ui/icons/Brightness4';
 import DragonaryLogo from 'assets/Dragonary/logo_dragonary.png';
-import Link from '../../shared/Link';
+import Link from 'components/shared/Link';
 
 const useStyles = makeStyles((theme) => createStyles({
   root: {

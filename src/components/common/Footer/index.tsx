@@ -4,6 +4,7 @@ import {
   Paper, Grid, Typography, IconButton,
 } from '@material-ui/core';
 import FileCopyIcon from '@material-ui/icons/FileCopy';
+import TouchAppIcon from '@material-ui/icons/TouchApp';
 import { useSnackbar } from 'notistack';
 
 const useStyles = makeStyles((theme) => createStyles({
@@ -31,7 +32,7 @@ const Footer = () => {
 
   const bsc = '0x0586566A17125051792b66c9d3f1f8917db2DE87';
   const eth = '0x7CED965f78451Ba8e33520DC2f9e322EF537F5CB';
-  const paypal = 'https://www.paypal.com/paypalme/my/profile';
+  const paypal = 'https://paypal.me/maxawkwardness?locale.x=en_US';
 
   return (
     <Paper className={classes.root}>
@@ -55,7 +56,10 @@ const Footer = () => {
             </IconButton>
           </Typography>
           <Typography>
-            <a href={paypal}>Paypal</a>
+            <a href={paypal} style={{ textDecoration: 'none', color: 'inherit' }}>
+              PAYPAL.ME
+              <TouchAppIcon />
+            </a>
           </Typography>
         </Grid>
       </Grid>
