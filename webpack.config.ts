@@ -39,7 +39,7 @@ const config: Configuration & { devServer: typeof devServer } = ({
         ],
       },
       {
-        test: /\.(png|svg|jpg|jpeg|gif|svg)$/,
+        test: /\.(png|svg|jpg|jpeg|gif|svg|ico|pdf)$/,
         type: 'asset/resource',
       },
     ],
