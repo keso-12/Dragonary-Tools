@@ -1,31 +1,41 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import {
-  BrowserRouter as Router, Redirect, Switch, Route,
+  BrowserRouter as Router, Switch, Route,
+  // Redirect,
 } from 'react-router-dom';
-import RouteAuthenticated from './AuthenticatedRoute';
+import { StoreContext } from 'globalStore';
+import { isEmpty } from 'lodash';
+import Dragonary from 'components/Apps/Dragonary';
+import NotFound from 'components/common/NotFound';
+import NavBar from 'components/common/NavBar';
+import Footer from 'components/common/Footer';
+// import RouteAuthenticated from './AuthenticatedRoute';
+import Home from 'components/Home';
 import RouteUnauthenticated from './UnauthenticatedRoute';
 
-import Home from '../Home';
-import NotFound from '../common/NotFound';
-import NavBar from '../common/NavBar';
-import Login from '../Authentication/Login';
-import Register from '../Authentication/Register';
-
-const isAuthenticated = false;
+// const isAuthenticated = false;
 // const fallbackUri = `${isAuthenticated ? '/dashboard' : '/login'}`;
-
-const App = () => (
-  <Router>
-    <NavBar />
-    <Switch>
-      <RouteUnauthenticated exact path="/" component={Home} />
-      <RouteUnauthenticated exact path="/signup" component={Register} />
-      <RouteUnauthenticated exact path="/login" component={Login} />
-      <Route component={NotFound} />
-      ;
-      {/* <Redirect to={fallbackUri} /> */}
-    </Switch>
-  </Router>
-);
+const App = ({ toggleTheme }: { toggleTheme: () => void }) => {
+  const { banner } = useContext(StoreContext);
+  return (
+    <Router>
+      <NavBar toggleTheme={toggleTheme} />
+      {!isEmpty(banner) && (
+      <img
+        src={banner}
+        alt="banner"
+        style={{ width: '100%', objectFit: 'cover', marginBottom: '2em' }}
+      />
+      )}
+      <Switch>
+        <RouteUnauthenticated exact path="/" component={Home} />
+        <RouteUnauthenticated exact path="/dragonary" component={Dragonary} />
+        <Route component={NotFound} />
+        {/* <Redirect to={fallbackUri} /> */}
+      </Switch>
+      <Footer />
+    </Router>
+  );
+};
 
 export default App;
