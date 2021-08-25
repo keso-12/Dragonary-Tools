@@ -16,6 +16,8 @@ export type DragonProps = {
   defense: number,
   bred: number,
   element: string,
+  cost?: number,
+  emberCost?: number,
 }
 
 export const initialStats = {
@@ -40,10 +42,24 @@ const getBreedingCost = (dragon1: DragonProps, dragon2: DragonProps) => {
   const dragonOneStatsSum = getStatsSum(dragon1);
   const dragonTwoStatsSum = getStatsSum(dragon1);
 
-  const dragonOneBreedingCost = dragonOneStatsSum > 50
-    ? uncommonCosts[dragon1.bred] : commonCosts[dragon1.bred];
-  const dragonTwoBreedingCost = dragonTwoStatsSum > 50
-    ? uncommonCosts[dragon2.bred] : commonCosts[dragon2.bred];
+  let dragonOneBreedingCost = 0;
+  if (dragon1.bred >= 5) {
+    dragonOneBreedingCost = dragonOneStatsSum > 50
+      ? uncommonCosts[5] : commonCosts[5];
+  } else {
+    dragonOneBreedingCost = dragonOneStatsSum > 50
+      ? uncommonCosts[dragon1.bred] : commonCosts[dragon1.bred];
+  }
+
+  let dragonTwoBreedingCost = 0;
+  if (dragon2.bred >= 5) {
+    dragonTwoBreedingCost = dragonTwoStatsSum > 50
+      ? uncommonCosts[5] : commonCosts[5];
+  } else {
+    dragonTwoBreedingCost = dragonTwoStatsSum > 50
+      ? uncommonCosts[dragon2.bred] : commonCosts[dragon2.bred];
+  }
+
   return dragonOneBreedingCost > dragonTwoBreedingCost
     ? dragonOneBreedingCost : dragonTwoBreedingCost;
 };
@@ -89,7 +105,7 @@ export const getOffspringStats = (dragon1: DragonProps, dragon2: DragonProps, em
   let costMultiplier = 1;
   const parentsRarity = getGreaterRarity(dragon1, dragon2);
   if (parentsRarity === 'common' && offspringTotalStats >= 50) costMultiplier = 1.5;
-  if (parentsRarity === 'uncommon' && offspringTotalStats >= 50) costMultiplier = 2;
+  if (parentsRarity === 'uncommon' && offspringTotalStats >= 90) costMultiplier = 2;
 
   const offspringElement = getOffspringElement(dragon1.element, dragon2.element, ember);
 

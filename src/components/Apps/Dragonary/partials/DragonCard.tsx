@@ -6,6 +6,7 @@ import TextInput from 'components/shared/plainFields/input';
 import SecurityIcon from '@material-ui/icons/Security';
 import FlashOnIcon from '@material-ui/icons/FlashOn';
 import PermIdentityIcon from '@material-ui/icons/PermIdentity';
+import AssessmentIcon from '@material-ui/icons/Assessment';
 import { DragonProps, elementList } from './helpers';
 
 type dragonCardProps = {
@@ -16,7 +17,7 @@ type dragonCardProps = {
 
 export default function DragonCard({ title, dragonState, setDragonState }: dragonCardProps) {
   const {
-    attack, defense, intelligence, element,
+    attack, defense, intelligence, element, bred,
   } = dragonState;
   const handleChange = (evt: ChangeEvent<HTMLInputElement>) => {
     const { value } = evt.target;
@@ -49,6 +50,14 @@ export default function DragonCard({ title, dragonState, setDragonState }: drago
           name="defense"
           type="number"
           icon={<SecurityIcon />}
+          onChange={handleChange}
+        />
+        <TextInput
+          label="# Bred"
+          value={bred}
+          name="bred"
+          type="number"
+          icon={<AssessmentIcon />}
           onChange={handleChange}
         />
         <TextField name="element" label="Element" value={element} onChange={handleChange} variant="filled" select fullWidth>
