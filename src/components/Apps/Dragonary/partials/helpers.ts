@@ -40,27 +40,25 @@ const getOffspringStatValue = (stat1: number, stat2: number) => {
 
 const getBreedingCost = (dragon1: DragonProps, dragon2: DragonProps) => {
   const dragonOneStatsSum = getStatsSum(dragon1);
-  const dragonTwoStatsSum = getStatsSum(dragon1);
+  const dragonTwoStatsSum = getStatsSum(dragon2);
 
   let dragonOneBreedingCost = 0;
   if (dragon1.bred >= 5) {
-    dragonOneBreedingCost = dragonOneStatsSum > 50
+    dragonOneBreedingCost = dragonOneStatsSum >= 50
       ? uncommonCosts[5] : commonCosts[5];
   } else {
-    dragonOneBreedingCost = dragonOneStatsSum > 50
+    dragonOneBreedingCost = dragonOneStatsSum >= 50
       ? uncommonCosts[dragon1.bred] : commonCosts[dragon1.bred];
   }
 
   let dragonTwoBreedingCost = 0;
   if (dragon2.bred >= 5) {
-    dragonTwoBreedingCost = dragonTwoStatsSum > 50
+    dragonTwoBreedingCost = dragonTwoStatsSum >= 50
       ? uncommonCosts[5] : commonCosts[5];
   } else {
-    dragonTwoBreedingCost = dragonTwoStatsSum > 50
+    dragonTwoBreedingCost = dragonTwoStatsSum >= 50
       ? uncommonCosts[dragon2.bred] : commonCosts[dragon2.bred];
   }
-  console.log(dragonOneStatsSum, dragonTwoStatsSum);
-  console.log(dragonOneBreedingCost, dragonTwoBreedingCost);
   return dragonOneBreedingCost >= dragonTwoBreedingCost
     ? dragonOneBreedingCost : dragonTwoBreedingCost;
 };
