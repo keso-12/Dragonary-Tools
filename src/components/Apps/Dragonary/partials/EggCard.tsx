@@ -7,6 +7,7 @@ import FlashOnIcon from '@material-ui/icons/FlashOn';
 import PermIdentityIcon from '@material-ui/icons/PermIdentity';
 import AllOutIcon from '@material-ui/icons/AllOut';
 import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
+import AssistantIcon from '@material-ui/icons/Assistant';
 import EggPng from 'assets/Dragonary/egg.png';
 import { DragonProps } from './helpers';
 
@@ -16,7 +17,7 @@ type EggProps = {
 
 export default function EggCard({ dragonState }: EggProps) {
   const {
-    attack, defense, intelligence, element, cost,
+    attack, defense, intelligence, element, cost, rarity,
   } = dragonState;
 
   return (
@@ -45,6 +46,10 @@ export default function EggCard({ dragonState }: EggProps) {
             <AttachMoneyIcon />
           </Grid>
           <Grid item xs={10}><Typography>{cost}</Typography></Grid>
+          <Grid item xs={2}>
+            <AssistantIcon />
+          </Grid>
+          <Grid item xs={10}><Typography>{rarity}</Typography></Grid>
         </Grid>
       </CardContent>
     </Fragment>
