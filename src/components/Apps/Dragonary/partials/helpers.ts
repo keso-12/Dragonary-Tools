@@ -30,7 +30,7 @@ export const initialStats = {
 
 const getStatsSum = (dragon: DragonProps) => {
   const { attack, intelligence, defense } = dragon;
-  return attack + intelligence + defense;
+  return Number(attack) + Number(intelligence) + Number(defense);
 };
 
 const getOffspringStatValue = (stat1: number, stat2: number) => {
@@ -59,8 +59,9 @@ const getBreedingCost = (dragon1: DragonProps, dragon2: DragonProps) => {
     dragonTwoBreedingCost = dragonTwoStatsSum > 50
       ? uncommonCosts[dragon2.bred] : commonCosts[dragon2.bred];
   }
-
-  return dragonOneBreedingCost > dragonTwoBreedingCost
+  console.log(dragonOneStatsSum, dragonTwoStatsSum);
+  console.log(dragonOneBreedingCost, dragonTwoBreedingCost);
+  return dragonOneBreedingCost >= dragonTwoBreedingCost
     ? dragonOneBreedingCost : dragonTwoBreedingCost;
 };
 
