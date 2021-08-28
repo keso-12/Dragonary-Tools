@@ -1,58 +1,40 @@
-import React, { useContext, useEffect, useState } from 'react';
-import {
-  Container, Card, Button, Grid, Paper, MenuItem, TextField,
-} from '@material-ui/core';
+import React, {
+  useContext, useEffect, useState, ChangeEvent,
+} from 'react';
+import { Container } from '@material-ui/core';
 import { StoreContext } from 'globalStore';
+import TextInput from 'components/shared/plainFields/input';
 import Banner from 'assets/Dragonary/dragonary-banner.png';
-import DragonCard from './partials/DragonCard';
-import EggCard from './partials/EggCard';
-import {
-  getOffspringStats, DragonProps, initialStats, elementList,
-} from './partials/helpers';
+import BreederCard from './partials/BreederCard';
 
 export default function SignUp() {
-  const [offspring, setOffspring] = useState<DragonProps>(initialStats);
-  const [dragon1, setDragonOne] = useState<DragonProps>(initialStats);
-  const [dragon2, setDragonTwo] = useState<DragonProps>(initialStats);
-  const [ember, setEmber] = useState('fire');
+  const [cards, setCards] = useState(1);
   const { setBanner } = useContext(StoreContext);
 
   useEffect(() => {
     setBanner(Banner);
   }, []);
 
-  const Breed = () => {
-    const stats = getOffspringStats(dragon1, dragon2, ember);
-    setOffspring(stats);
+  const handleChange = (evt: ChangeEvent<HTMLInputElement>) => {
+    const { value } = evt.target;
+    setCards(Number(value));
   };
+
+  const renderedCards = [];
+  for (let i = 0; i < cards; i += 1) {
+    renderedCards.push(<BreederCard />);
+  }
 
   return (
     <Container component="main">
-      <Paper>
-        <Grid container>
-          <Grid item md={4}>
-            <DragonCard title="Dragon One" dragonState={dragon1} setDragonState={setDragonOne} />
-          </Grid>
-          <Grid item md={4}>
-            <Card style={{ width: '400px', padding: '1em' }}>
-              <EggCard dragonState={offspring} />
-              <TextField id="element" name="element" label="Ember Element" value={ember} onChange={(e) => setEmber(e.target.value)} variant="outlined" select fullWidth>
-                {elementList.map((option) => (
-                  <MenuItem key={option.value} value={option.value}>
-                    {option.label}
-                  </MenuItem>
-                ))}
-              </TextField>
-              <Button variant="contained" color="primary" onClick={Breed} style={{ marginTop: '0.5em' }} fullWidth>
-                Breed
-              </Button>
-            </Card>
-          </Grid>
-          <Grid item md={4}>
-            <DragonCard title="Dragon Two" dragonState={dragon2} setDragonState={setDragonTwo} />
-          </Grid>
-        </Grid>
-      </Paper>
+      <TextInput
+        label="# of Breeding Cards"
+        value={cards}
+        name="cards"
+        type="number"
+        onChange={handleChange}
+      />
+      {renderedCards.map((r) => r)}
     </Container>
   );
 }

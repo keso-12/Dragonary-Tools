@@ -18,6 +18,7 @@ export type DragonProps = {
   element: string,
   cost?: number,
   emberCost?: number,
+  rarity?: string,
 }
 
 export const initialStats = {
