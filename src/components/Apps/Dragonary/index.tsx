@@ -4,6 +4,7 @@ import { StoreContext } from 'globalStore';
 import Banner from 'assets/Dragonary/dragonary-banner.png';
 import TabControl from 'components/shared/TabControl';
 import BreedingSimulator from './BreedingSimulator';
+import FusionSimulator from './FusionSimulator';
 
 const Dragonary = () => {
   const { setBanner } = useContext(StoreContext);
@@ -22,7 +23,7 @@ const Dragonary = () => {
           },
           {
             header: 'Fusion Simulator',
-            content: <BreedingSimulator />,
+            content: <FusionSimulator />,
           },
         ]}
       />

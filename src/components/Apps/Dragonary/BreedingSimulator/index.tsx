@@ -2,7 +2,7 @@ import React, { useState, ChangeEvent, Fragment } from 'react';
 import TextInput from 'components/shared/plainFields/input';
 import BreederCard from './partials/BreederCard';
 
-export default function SignUp() {
+export default function BreedingSimulator() {
   const [cards, setCards] = useState(1);
 
   const handleChange = (evt: ChangeEvent<HTMLInputElement>) => {

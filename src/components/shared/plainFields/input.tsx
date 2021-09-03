@@ -9,6 +9,8 @@ export type InputProps = {
   onChange: (evt: ChangeEvent<HTMLInputElement>) => void,
   icon?: ReactNode
   helperText?:string,
+  minimum?: number,
+  maximum?: number,
 }
 
 const TextInput = ({
@@ -17,6 +19,8 @@ const TextInput = ({
   type,
   value,
   icon,
+  minimum,
+  maximum,
   onChange,
   helperText = '',
 }: InputProps) => (
@@ -35,6 +39,9 @@ const TextInput = ({
           {icon}
         </InputAdornment>
       ),
+      inputProps: {
+        max: maximum, min: minimum,
+      },
     }}
     fullWidth
   />
