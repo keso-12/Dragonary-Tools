@@ -8,7 +8,7 @@
     "build": "env-cmd webpack --mode production",
     "heroku-postbuild": "webpack --mode production",
     "start:dev": "env-cmd webpack serve --hot --progress --mode development",
-    "start": "serve public",
+    "start": "serve -s -n public",
     "test": "jest --verbose --colors"
   },
   "keywords": [
